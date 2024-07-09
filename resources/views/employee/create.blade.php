@@ -18,11 +18,11 @@
                 </div>
                 <div class="flex flex-col gap-1 mt-2">
                     <label for="customer_complain">Jumlah Komplain Pelayanan</label>
-                    <input id="customer_complain" name="customer_complain" type="number" value="{{old('customer_complain')}}" required placeholder="Masukkan Nama Karyawan" class="w-full p-1 pl-2 rounded border border-gray-300" />
+                    <input id="customer_complain" name="customer_complain" type="number" value="{{old('customer_complain')}}" required placeholder="Masukkan Jumlah Komplain Pelayanan" class="w-full p-1 pl-2 rounded border border-gray-300" />
                 </div>
                 <div class="flex flex-col gap-1 mt-2">
                     <label for="vehicle_complain">Jumlah Komplain Kendaraan</label>
-                    <input id="vehicle_complain" name="vehicle_complain" type="number" value="{{old('vehicle_complain')}}" required placeholder="Masukkan Nama Karyawan" class="w-full p-1 pl-2 rounded border border-gray-300" />
+                    <input id="vehicle_complain" name="vehicle_complain" type="number" value="{{old('vehicle_complain')}}" required placeholder="Masukkan Jumlah Komplain Kendaraan" class="w-full p-1 pl-2 rounded border border-gray-300" />
                 </div>
                 <div class="flex flex-col gap-1 mt-2">
                     <label for="total_service">Jumlah Kendaraan Diservis</label>

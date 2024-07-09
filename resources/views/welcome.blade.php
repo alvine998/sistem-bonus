@@ -15,8 +15,9 @@
 <body>
     <div class="flex items-center justify-center">
         <div class="border-2 w-1/3 rounded p-2 mt-[15%] px-10">
-            <h2 class="text-xl font-bold text-center py-2">SISTEM BONUS GAJI KARYAWAN</h2>
-            <form action="" class="mt-4">
+            <h2 class="text-xl font-bold text-center py-2">SISTEM BONUS GAJI MEKANIK</h2>
+            <form action="{{route('welcome.login')}}" class="mt-4" method="POST">
+                @csrf
                 <div>
                     <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
                     <div class="mt-1">
@@ -35,6 +36,15 @@
                 </div>
                 <button type="submit" class="rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 mt-2 w-full">Login</button>
             </form>
+            @if ($errors->any())
+            <div class="mt-10">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li class="text-red-500">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
         </div>
     </div>
 </body>

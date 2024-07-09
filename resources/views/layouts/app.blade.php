@@ -30,10 +30,10 @@
 <body class="overflow-y-hidden">
     <div class="flex justify-between items-center h-[50px] w-full bg-blue-500">
         <div class="lg:ml-5">
-            <h2 class="text-white text-xl font-semibold">Sistem Bonus Gaji Karyawan</h2>
+            <h2 class="text-white text-xl font-semibold">Sistem Bonus Gaji Mekanik</h2>
         </div>
         <div class="flex items-center justify-end px-10 gap-10">
-            <a href="/" class="text-white bg-red-700 hover:bg-red-600 p-2 rounded-md font-bold">Logout</a>
+            <a href="{{route('welcome.logout')}}" class="text-white bg-red-700 hover:bg-red-600 p-2 rounded-md font-bold">Logout</a>
         </div>
     </div>
     <div class="flex">

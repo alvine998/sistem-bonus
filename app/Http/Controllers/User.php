@@ -12,10 +12,11 @@ class User extends Controller
     public function index()
     {
         $user = ModelsUser::latest()->whereNull('deleted_at')->paginate(5);
-        if (Auth::check()) {
-            return view('user.index', compact('user'));
-        }
-        return redirect("/")->withSuccess('Opps! You do not have access');
+        // if (Auth::check()) {
+        //     return view('user.index', compact('user'));
+        // }
+        // return redirect("/")->withSuccess('Opps! You do not have access');
+        return view('user.index', compact('user'));
     }
 
     public function create()
@@ -27,47 +28,16 @@ class User extends Controller
     {
         $this->validate($req, [
             'name' => 'required',
-            'nik' => 'required',
-            'type' => 'required',
+            'email' => 'required',
             'password' => 'required|min:8',
-            'user_name' => 'required',
-            'user_type' => 'required',
-            'user_id' => 'required'
         ]);
         $hashPassword = Hash::make($req->password);
 
-        if ($req->file('photo')) {
-            $photo = $req->file('photo');
-            $photo->storeAs('public/storage', $photo->hashName());
-            ModelsUser::create([
-                'name' => $req->name,
-                'nik' => $req->nik,
-                'notes' => $req->notes,
-                'type' => $req->type,
-                'password' => $hashPassword,
-                'role' => $req->role,
-                'photo' => $photo->hashName(),
-                'created_by' => json_encode([
-                    'user_name' => $req->user_name,
-                    'user_type' => $req->user_type,
-                    'user_id' => $req->user_id,
-                ])
-            ]);
-        } else {
-            ModelsUser::create([
-                'name' => $req->name,
-                'nik' => $req->nik,
-                'notes' => $req->notes,
-                'type' => $req->type,
-                'password' => $hashPassword,
-                'role' => $req->role,
-                'created_by' => json_encode([
-                    'user_name' => $req->user_name,
-                    'user_type' => $req->user_type,
-                    'user_id' => $req->user_id,
-                ])
-            ]);
-        }
+        ModelsUser::create([
+            'name' => $req->name,
+            'email' => $req->email,
+            'password' => $hashPassword,
+        ]);
 
         return redirect()->route('user.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
@@ -81,11 +51,7 @@ class User extends Controller
     {
         $this->validate($req, [
             'name' => 'required',
-            'nik' => 'required',
-            'type' => 'required',
-            'user_name' => 'required',
-            'user_type' => 'required',
-            'user_id' => 'required'
+            'email' => 'required',
         ]);
 
         if ($req->password) {
@@ -93,46 +59,13 @@ class User extends Controller
 
             $user->update([
                 'name' => $req->name,
-                'nik' => $req->nik,
-                'notes' => $req->notes,
-                'type' => $req->type,
+                'email' => $req->email,
                 'password' => $hashPassword,
-                'role' => $req->role,
-                'created_by' => json_encode([
-                    'user_name' => $req->user_name,
-                    'user_type' => $req->user_type,
-                    'user_id' => $req->user_id,
-                ])
-            ]);
-        } else if ($req->file('photo')) {
-            $photo = $req->file('photo');
-            $photo->storeAs('public/storage', $photo->hashName());
-
-            $user->update([
-                'name' => $req->name,
-                'nik' => $req->nik,
-                'notes' => $req->notes,
-                'type' => $req->type,
-                'role' => $req->role,
-                'photo' => $photo->hashName(),
-                'created_by' => json_encode([
-                    'user_name' => $req->user_name,
-                    'user_type' => $req->user_type,
-                    'user_id' => $req->user_id,
-                ])
             ]);
         } else {
             $user->update([
                 'name' => $req->name,
-                'nik' => $req->nik,
-                'notes' => $req->notes,
-                'type' => $req->type,
-                'role' => $req->role,
-                'created_by' => json_encode([
-                    'user_name' => $req->user_name,
-                    'user_type' => $req->user_type,
-                    'user_id' => $req->user_id,
-                ])
+                'email' => $req->email,
             ]);
         }
         return redirect()->route('user.index')->with(['success' => 'Data Berhasil Disimpan!']);
