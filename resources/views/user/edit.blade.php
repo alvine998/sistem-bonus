@@ -10,11 +10,11 @@
             <div class="w-full mt-5">
                 <div class="flex flex-col gap-1">
                     <label for="name">Nama</label>
-                    <input id="name" name="name" type="text" value="{{old('name')}}" required placeholder="Masukkan Nama" class="w-full p-1 pl-2 rounded border border-gray-300" />
+                    <input id="name" name="name" type="text" value="{{old('name', $user->name)}}" required placeholder="Masukkan Nama" class="w-full p-1 pl-2 rounded border border-gray-300" />
                 </div>
                 <div class="flex flex-col gap-1 mt-2">
                     <label for="email">Email</label>
-                    <input id="email" name="email" type="email" value="{{old('email')}}" required placeholder="Masukkan email" class="w-full p-1 pl-2 rounded border border-gray-300" />
+                    <input id="email" name="email" type="email" value="{{old('email', $user->email)}}" required placeholder="Masukkan email" class="w-full p-1 pl-2 rounded border border-gray-300" />
                 </div>
 
                 <div class="flex flex-col gap-1 mt-2">

@@ -8,20 +8,30 @@
             @csrf
             @method('PUT')
             <div class="mt-10">
+                <!-- Modal Body -->
                 <div class="flex flex-col gap-1">
                     <label for="name">Nama Mekanik</label>
-                    <input id="name" name="name" type="text" value="{{old('name', $employee->name)}}" required placeholder="Masukkan Nama Kriteria" class="w-full p-1 pl-2 rounded border border-gray-300" />
+                    <input id="name" name="name" type="text" value="{{old('name', $employee->name)}}" required placeholder="Masukkan Nama Mekanik" class="w-full p-1 pl-2 rounded border border-gray-300" />
                 </div>
                 <div class="flex flex-col gap-1 mt-2">
-                    <label for="percentage">Status</label>
-                    <div class="flex gap-2 items-center">
-                        <input type="radio" name="status" id="status" value="1" {{old('status', $employee->status) == 1 ? "checked" : ""}}>
-                        <span>Aktif</span>
-                    </div>
-                    <div class="flex gap-2 items-center">
-                        <input type="radio" name="status" id="status" value="2" {{old('status', $employee->status) == 2 ? "checked" : ""}}>
-                        <span>Non Aktif</span>
-                    </div>
+                    <label for="presence">Jumlah Kehadiran</label>
+                    <input id="presence" name="presence" type="number" value="{{old('presence', $employee->presence)}}" required placeholder="Masukkan Jumlah Kehadiran" class="w-full p-1 pl-2 rounded border border-gray-300" />
+                </div>
+                <div class="flex flex-col gap-1 mt-2">
+                    <label for="customer_complain">Jumlah Komplain Pelayanan</label>
+                    <input id="customer_complain" name="customer_complain" type="number" value="{{old('customer_complain', $employee->customer_complain)}}" required placeholder="Masukkan Jumlah Komplain Pelayanan" class="w-full p-1 pl-2 rounded border border-gray-300" />
+                </div>
+                <div class="flex flex-col gap-1 mt-2">
+                    <label for="vehicle_complain">Jumlah Komplain Kendaraan</label>
+                    <input id="vehicle_complain" name="vehicle_complain" type="number" value="{{old('vehicle_complain', $employee->vehicle_complain)}}" required placeholder="Masukkan Jumlah Komplain Kendaraan" class="w-full p-1 pl-2 rounded border border-gray-300" />
+                </div>
+                <div class="flex flex-col gap-1 mt-2">
+                    <label for="total_service">Jumlah Kendaraan Diservis</label>
+                    <input id="total_service" name="total_service" type="number" value="{{old('total_service', $employee->total_service)}}" required placeholder="Masukkan Jumlah Kendaraan Diservis" class="w-full p-1 pl-2 rounded border border-gray-300" />
+                </div>
+                <div class="flex flex-col gap-1 mt-2">
+                    <label for="team_complain">Komplain Kerjasama Tim</label>
+                    <input id="team_complain" name="team_complain" type="number" value="{{old('team_complain', $employee->team_complain)}}" required placeholder="Masukkan Komplain Kerjasama Tim" class="w-full p-1 pl-2 rounded border border-gray-300" />
                 </div>
 
                 <div class="mt-5 flex justify-between items-center gap-2">
