@@ -11,7 +11,7 @@ class Employee extends Controller
 {
     public function index()
     {
-        $employee = ModelsEmployee::latest()->whereNull('deleted_at')->paginate(5);
+        $employee = ModelsEmployee::orderBy('total_bonus', 'desc')->whereNull('deleted_at')->paginate(5);
         return view('employee.index', compact('employee'));
     }
 
@@ -177,8 +177,9 @@ class Employee extends Controller
         }
 
 
-        // S value initial
+        // initial
         $s = 0;
+        $arrays = [];
         foreach ($emp_data as $item) {
             // Menghitung Kehadiran
             $presence = ($item->presence / 72) * 100;
@@ -267,12 +268,16 @@ class Employee extends Controller
 
             $total_bonus = $w1 * $w2 * $w3 * $w4 * $w5;
             $s = $s + round($total_bonus, 2, PHP_ROUND_HALF_EVEN);
-
-            $item->update([
-                'total_bonus' => $total_bonus
-            ]);
+            $item->total_bonus = round($total_bonus, 2, PHP_ROUND_HALF_EVEN);
         }
-        Log::info($s);
+
+        foreach ($emp_data as $item) {
+            $result = round($item->total_bonus / $s, 2, PHP_ROUND_HALF_EVEN);
+            $item->update([
+                'total_bonus' => $result
+            ]);
+            Log::info($result);
+        }
         return redirect()->route('employee.index')->with(['success' => 'Data Berhasil Diupdate!']);
     }
 

@@ -32,7 +32,7 @@
                     <th class="border border-black bg-gray-300 px-4 py-2">Komplain Kendaraan</th>
                     <th class="border border-black bg-gray-300 px-4 py-2">Total Servis</th>
                     <th class="border border-black bg-gray-300 px-4 py-2">Komplain Tim</th>
-                    <th class="border border-black bg-gray-300 px-4 py-2">Bonus</th>
+                    <th class="border border-black bg-gray-300 px-4 py-2">Nilai V</th>
                     <th class="border border-black bg-gray-300 px-4 py-2">Aksi</th>
                 </tr>
             </thead>
@@ -73,30 +73,6 @@
                         </form>
                     </td>
                 </tr>
-
-                <x-modal-delete>
-                    <form action="{{route('employee.destroy', $item->id)}}" enctype="multipart/form-data" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <!-- Modal Header -->
-                        <div class="flex justify-between items-center pb-3">
-                            <p class="text-2xl font-bold">Hapus Data Karyawan</p>
-                            <div class="modal-close cursor-pointer z-50" onclick="toggleModal('modal-delete')">
-                                <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-                                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <!-- Modal Body -->
-                        <div class="mt-2">
-                            <p class="my-2">Apakah anda yakin ingin menghapus data {{$item->name}}?</p>
-                            <div class="flex items-center gap-2">
-                                <button type="button" onclick="toggleModal('modal-delete')" class="w-full p-1 rounded bg-white text-black hover:border-2 duration-200 mt-4">Batal</button>
-                                <button type="submit" class="w-full p-1 rounded bg-red-500 text-white hover:bg-red-600 duration-200 mt-4">Hapus</button>
-                            </div>
-                        </div>
-                    </form>
-                </x-modal-delete>
                 @empty
                 <div class="bg-red-200 w-full p-2 rounded-md my-2">
                     <p class="text-red-500">Data Mekanik Tidak Tersedia</p>
